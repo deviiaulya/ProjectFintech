@@ -8,8 +8,10 @@ const pool = new Pool({
   }
 });
 
+//koneksi ke database supabase
 pool.connect()
   .then(() => console.log('Supabase PostgreSQL connected'))
   .catch((err) => console.error('PostgreSQL connection error:', err));
 
 module.exports = pool;
+
