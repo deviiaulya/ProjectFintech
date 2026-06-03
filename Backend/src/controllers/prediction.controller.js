@@ -80,7 +80,7 @@ const predictRisk = async (req, res) => {
 
     const { sex, education, marriage, age } = userResult.rows[0];
 
-    // kirim ke FastAPI temanmu
+    // kirim ke FastAPI 
     const payload = {
       limit_bal,
       sex,
