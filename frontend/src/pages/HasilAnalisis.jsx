@@ -5,7 +5,7 @@ function HasilAnalisis() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Ambil data dari location.state atau localStorage
+  
   const savedData = localStorage.getItem('lastAnalysis');
   const data = location.state?.data || (savedData ? JSON.parse(savedData) : null);
 
@@ -13,7 +13,7 @@ function HasilAnalisis() {
     day: "numeric", month: "long", year: "numeric"
   });
 
-  // Kalau tidak ada data
+  // pesan eror jika data ga ditemukan
   if (!data) {
     return (
       <div style={{ textAlign: 'center', padding: '60px' }}>
@@ -65,7 +65,7 @@ function HasilAnalisis() {
     <div className="hasil-page">
       <div className="hasil-container">
 
-        {/* BREADCRUMB */}
+        
         <div className="breadcrumb">
           <span onClick={() => navigate("/dashboard")}>🏠 Beranda</span>
           <span className="bc-sep">›</span>
@@ -74,7 +74,7 @@ function HasilAnalisis() {
           <span className="bc-current">Hasil Analisis</span>
         </div>
 
-        {/* TITLE */}
+        
         <div className="hasil-title-row">
           <div>
             <h1>Hasil Analisis Risiko</h1>
@@ -83,7 +83,7 @@ function HasilAnalisis() {
           <div className="hasil-date">📅 {today}</div>
         </div>
 
-        {/* RISK CARD */}
+        
         <div className="risk-card">
           <div className="risk-card-header">
             <div>
@@ -94,7 +94,7 @@ function HasilAnalisis() {
           </div>
 
           <div className="risk-visual">
-            {/* Ring gauge */}
+            
             <div className="risk-ring-wrap">
               <svg width="180" height="180" viewBox="0 0 180 180">
                 <circle className="ring-bg" cx="90" cy="90" r="70"/>
@@ -115,7 +115,7 @@ function HasilAnalisis() {
               </div>
             </div>
 
-            {/* Breakdown */}
+          
             <div className="risk-breakdown">
               <div className="breakdown-item">
                 <div className="breakdown-header">
@@ -159,7 +159,7 @@ function HasilAnalisis() {
           </div>
         </div>
 
-        {/* INSIGHT + REKOMENDASI PRIORITAS */}
+        
         <div className="cards-row">
           <div className="insight-box">
             <h3>🔍 Insight Analisis</h3>
@@ -188,7 +188,7 @@ function HasilAnalisis() {
           </div>
         </div>
 
-        {/* NEXT STEPS */}
+        
         <div className="next-steps-card">
           <div className="next-steps-text">
             <h3>Langkah Selanjutnya</h3>

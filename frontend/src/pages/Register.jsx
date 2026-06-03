@@ -99,7 +99,7 @@ export default function Register() {
 
         <form className="auth-form" onSubmit={handleSubmit} noValidate>
 
-          {/* Nama */}
+          
           <div className="auth-field">
             <label className="auth-label">Nama Lengkap</label>
             <div className="auth-input-wrap">
@@ -112,7 +112,7 @@ export default function Register() {
             {fieldErr.fullname && <span className="field-error">⚠ {fieldErr.fullname}</span>}
           </div>
 
-          {/* Email */}
+        
           <div className="auth-field">
             <label className="auth-label">Email</label>
             <div className="auth-input-wrap">
@@ -125,7 +125,7 @@ export default function Register() {
             {fieldErr.email && <span className="field-error">⚠ {fieldErr.email}</span>}
           </div>
 
-          {/* Password */}
+         
           <div className="auth-field">
             <label className="auth-label">Password</label>
             <div className="auth-input-wrap">
@@ -154,7 +154,7 @@ export default function Register() {
             )}
           </div>
 
-          {/* Konfirmasi Password */}
+         
           <div className="auth-field">
             <label className="auth-label">Konfirmasi Password</label>
             <div className="auth-input-wrap">
@@ -168,13 +168,13 @@ export default function Register() {
             {fieldErr.confirm && <span className="field-error">⚠ {fieldErr.confirm}</span>}
           </div>
 
-          {/* Garis pemisah */}
+          
           <div style={{ borderTop: '1px solid #e5e7eb', margin: '4px 0' }} />
           <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#374151' }}>
             📋 Data Demografis
           </p>
 
-          {/* Jenis Kelamin */}
+         
           <div className="auth-field">
             <label className="auth-label">Jenis Kelamin</label>
             <div className="auth-input-wrap">
@@ -190,7 +190,7 @@ export default function Register() {
             {fieldErr.sex && <span className="field-error">⚠ {fieldErr.sex}</span>}
           </div>
 
-          {/* Pendidikan */}
+         
           <div className="auth-field">
             <label className="auth-label">Pendidikan Terakhir</label>
             <div className="auth-input-wrap">
@@ -208,7 +208,7 @@ export default function Register() {
             {fieldErr.education && <span className="field-error">⚠ {fieldErr.education}</span>}
           </div>
 
-          {/* Status Pernikahan */}
+          
           <div className="auth-field">
             <label className="auth-label">Status Pernikahan</label>
             <div className="auth-input-wrap">
@@ -225,7 +225,7 @@ export default function Register() {
             {fieldErr.marriage && <span className="field-error">⚠ {fieldErr.marriage}</span>}
           </div>
 
-          {/* Usia */}
+       
           <div className="auth-field">
             <label className="auth-label">Usia</label>
             <div className="auth-input-wrap">

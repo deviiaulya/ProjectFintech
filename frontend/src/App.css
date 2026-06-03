@@ -9,14 +9,14 @@ body {
   background-color: #efefef;
 }
 
-/* CONTAINER */
+
 
 .container {
   width: 100%;
   padding: 20px 32px;
 }
 
-/* NAVBAR */
+
 
 .navbar {
   width: 100%;
@@ -33,7 +33,7 @@ body {
   justify-content: space-between;
 }
 
-/* LOGO */
+
 
 .logo {
   display: flex;
@@ -54,7 +54,7 @@ body {
   color: #39b86f;
 }
 
-/* NAV LINKS */
+
 
 .nav-links {
   display: flex;
@@ -75,7 +75,7 @@ body {
   color: #39b86f;
 }
 
-/* BUTTON */
+
 
 .btn-start {
   background: #b8e6c7;
@@ -100,7 +100,7 @@ body {
   background: #a3ddb6;
 }
 
-/* HERO */
+
 
 .hero {
   width: 100%;
@@ -120,14 +120,14 @@ body {
   padding: 50px;
 }
 
-/* HERO CONTENT */
+
 
 .hero-content {
   width: 100%;
   text-align: center;
 }
 
-/* HERO TITLE */
+
 
 .hero h1 {
   font-size: 82px;
@@ -138,7 +138,7 @@ body {
   text-shadow: 0px 5px 8px rgba(0, 0, 0, 0.35);
 }
 
-/* HERO TEXT */
+
 
 .hero p {
   margin-top: 35px;
@@ -149,7 +149,18 @@ body {
   color: #98e56d;
 }
 
-/* FEATURES */
+
+.hero-left h1 {
+  color: #0f172a !important;
+  text-shadow: none !important;
+}
+
+.hero-left p {
+  color: #475569 !important;
+  font-size: 18px !important;
+}
+
+
 
 .features {
   margin-top: 45px;
@@ -161,7 +172,7 @@ body {
   justify-content: center;
 }
 
-/* FEATURE CARD */
+
 
 .feature-card {
   width: 320px;
@@ -187,7 +198,7 @@ body {
   text-align: center;
 }
 
-/* LINE */
+
 
 .line {
   width: 110px;
@@ -196,7 +207,7 @@ body {
   background: #4ea468;
 }
 
-/* RESPONSIVE */
+
 
 @media (max-width: 1200px) {
   .hero h1 {

@@ -18,7 +18,7 @@ function Dashboard() {
   return (
     <div className="dashboard-page">
 
-      {/* HEADER */}
+      
       <header className="top-header">
         <div className="logo-section">
           <div className="logo-icon">
@@ -31,7 +31,7 @@ function Dashboard() {
           <span className="badge badge-secure"><Shield size={14}/> Data Aman</span>
           <span className="badge badge-free"><DollarSign size={14}/> Gratis</span>
 
-          {/* Nama user */}
+          
           {user && (
             <span style={{
               fontSize: '0.82rem', fontWeight: 600, color: '#374151',
@@ -42,7 +42,7 @@ function Dashboard() {
             </span>
           )}
 
-          {/* Tombol Logout */}
+    
           <button
             onClick={handleLogout}
             style={{
@@ -61,10 +61,10 @@ function Dashboard() {
         </div>
       </header>
 
-      {/* MAIN */}
+      
       <div className="main-layout">
 
-        {/* SIDEBAR */}
+      
         <aside className="sidebar">
           <div>
             <p className="sidebar-title">Menu</p>
@@ -100,11 +100,10 @@ function Dashboard() {
             </div>
           </div>
         </aside>
-
-        {/* CONTENT */}
+        
         <main className="dashboard-content">
           <div className="hero-card">
-            {/* Background image overlay */}
+            
             <div className="hero-card-image">
               <img
                 src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=60"
@@ -129,7 +128,7 @@ function Dashboard() {
 
             <div className="hero-right">
               <div className="metric-card">
-                <h2>25+</h2>
+                <h2>31+</h2>
                 <span>Variabel dianalisis</span>
               </div>
               <div className="metric-card">
@@ -143,7 +142,7 @@ function Dashboard() {
             </div>
           </div>
 
-          {/* Quick stats */}
+          
           <div className="quick-stats-row">
             <div className="quick-stat-card">
               <div className="qs-icon qs-green">💳</div>

@@ -1,7 +1,3 @@
-/* ===========================
-   DASHBOARD - GEN Z STYLE
-   =========================== */
-
 .dashboard-page {
   width: 100%;
   min-height: 100vh;
@@ -9,7 +5,6 @@
   font-family: var(--font-main);
 }
 
-/* ---- HEADER ---- */
 .top-header {
   height: 68px;
   background: white;
@@ -97,7 +92,7 @@
   min-height: calc(100vh - 68px);
 }
 
-/* ---- SIDEBAR ---- */
+
 .sidebar {
   width: 260px;
   background: white;
@@ -151,7 +146,7 @@
   border: 1px solid var(--green-pale) !important;
 }
 
-/* PROGRESS */
+
 .progress-section {
   padding-top: 24px;
   border-top: 1px solid var(--gray-200);
@@ -215,14 +210,14 @@
   line-height: 1.5;
 }
 
-/* ---- CONTENT ---- */
+
 .dashboard-content {
   flex: 1;
   padding: 28px;
   overflow: auto;
 }
 
-/* HERO CARD */
+
 .hero-card {
   width: 100%;
   min-height: 560px;
@@ -239,7 +234,7 @@
   animation: fadeInUp 0.5s ease both;
 }
 
-/* Decorative circles */
+
 .hero-card::before {
   content: '';
   position: absolute;
@@ -260,7 +255,7 @@
   pointer-events: none;
 }
 
-/* Hero Image in Card */
+
 .hero-card-image {
   position: absolute;
   right: 260px; top: 0; bottom: 0;
@@ -370,7 +365,7 @@
   font-weight: 500;
 }
 
-/* Quick stats row below hero */
+
 .quick-stats-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://gregarious-art-production-cac2.up.railway.app/api',
+  baseURL: 'https://gregarious-art-production-cac2.up.railway.app/api',
 });
 
 api.interceptors.request.use((config) => {

@@ -9,13 +9,13 @@ import {
 } from "lucide-react";
 import api from "../utils/api";
 
-// Format angka jadi ribuan: 50000000 → 50.000.000
+// Format angka jadi ribuan: 50000000 jdi 50.000.000
 const formatRibuan = (val) => {
   if (!val && val !== 0) return '';
   return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 };
 
-// Hapus titik, ambil angka aslinya: 50.000.000 → 50000000
+// Hapus titik, ambil angka aslinya: 50.000.000 jadi 50000000
 const parseRibuan = (val) => {
   return val.replace(/\./g, '');
 };
@@ -25,14 +25,14 @@ function InputData() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // displayForm untuk tampilan (dengan titik)
+  
   const [displayForm, setDisplayForm] = useState({
     limit_bal: '',
     bill_amt1: '', bill_amt2: '', bill_amt3: '',
     pay_amt1: '', pay_amt2: '', pay_amt3: '',
   });
 
-  // rawForm untuk dikirim ke API (tanpa titik)
+  
   const [rawForm, setRawForm] = useState({
     limit_bal: '',
     bill_amt1: '', bill_amt2: '', bill_amt3: '',
@@ -40,7 +40,7 @@ function InputData() {
     pay_1: '', pay_2: '', pay_3: ''
   });
 
-  // Handle input angka dengan format ribuan
+  
   const handleNumberChange = (e) => {
     const { name, value } = e.target;
     const cleaned = parseRibuan(value).replace(/[^0-9]/g, '');
@@ -54,7 +54,7 @@ function InputData() {
     }));
   };
 
-  // Handle select status pembayaran
+  
   const handleSelectChange = (e) => {
     const { name, value } = e.target;
     setRawForm(prev => ({
@@ -110,7 +110,7 @@ function InputData() {
   return (
     <div className="input-page">
 
-      {/* HEADER */}
+      
       <header className="top-header">
         <div className="logo-section">
           <div className="logo-icon"><TrendingUp size={20}/></div>
@@ -125,7 +125,7 @@ function InputData() {
 
       <div className="main-layout">
 
-        {/* SIDEBAR */}
+        
         <aside className="sidebar">
           <div>
             <p className="sidebar-title">Menu</p>
@@ -160,14 +160,14 @@ function InputData() {
           </div>
         </aside>
 
-        {/* CONTENT */}
+        
         <main className="content">
           <div className="page-header">
             <h1>Input Data Keuangan</h1>
             <p>Isi data di bawah sesuai kartu kreditmu. Semua field wajib diisi.</p>
           </div>
 
-          {/* TIPS */}
+          
           <div className="tips-card">
             <span className="tips-icon">💡</span>
             <div className="tips-text">
@@ -176,7 +176,7 @@ function InputData() {
             </div>
           </div>
 
-          {/* ERROR */}
+          
           {error && (
             <div style={{
               background: '#fee2e2', color: '#dc2626',
@@ -189,7 +189,7 @@ function InputData() {
 
           <div className="form-wrapper">
 
-            {/* LEFT CARD */}
+            
             <div className="form-card">
               <h2>Data Kartu Kredit</h2>
 
@@ -296,7 +296,7 @@ function InputData() {
 
             </div>
 
-            {/* RIGHT CARD */}
+            
             <div className="form-card">
               <h2>Riwayat Pembayaran</h2>
               <p style={{fontSize:'0.8rem', color:'#6b7280', marginBottom:'16px'}}>
@@ -341,7 +341,7 @@ function InputData() {
 
           </div>
 
-          {/* BUTTONS */}
+          
           <div className="button-group">
             <button className="reset-btn" onClick={handleReset}>
               <RotateCcw size={15}/>

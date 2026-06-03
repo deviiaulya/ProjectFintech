@@ -1,6 +1,4 @@
-/* ===========================
-   INPUT DATA - GEN Z STYLE
-   =========================== */
+
 
 .input-page {
   min-height: 100vh;
@@ -8,7 +6,7 @@
   font-family: var(--font-main);
 }
 
-/* Reuse top-header & sidebar from Dashboard */
+
 
 .content {
   flex: 1;
@@ -17,7 +15,7 @@
   animation: fadeInUp 0.5s ease both;
 }
 
-/* PAGE HEADER */
+
 .page-header {
   margin-bottom: 28px;
 }
@@ -35,7 +33,7 @@
   color: var(--gray-600);
 }
 
-/* FORM WRAPPER */
+
 .form-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -43,7 +41,7 @@
   margin-bottom: 24px;
 }
 
-/* FORM CARD */
+
 .form-card {
   background: white;
   border-radius: var(--radius-lg);
@@ -77,7 +75,7 @@
   border-radius: 4px;
 }
 
-/* FORM GROUP */
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -126,7 +124,7 @@
   border-color: var(--green-pale);
 }
 
-/* Select custom arrow */
+
 .select-wrapper {
   position: relative;
 }
@@ -146,14 +144,14 @@
   cursor: pointer;
 }
 
-/* DOUBLE INPUT */
+
 .double-input {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-/* INPUT ICON */
+
 .input-with-icon {
   position: relative;
 }
@@ -171,12 +169,12 @@
   pointer-events: none;
 }
 
-/* STATUS BADGES in select */
+
 .status-late { color: #ef4444; }
 .status-ontime { color: var(--green-primary); }
 .status-min { color: var(--yellow); }
 
-/* BUTTON GROUP */
+
 .button-group {
   display: flex;
   gap: 12px;
@@ -237,7 +235,7 @@
   transform: translateX(4px);
 }
 
-/* Tips card */
+
 .tips-card {
   background: #f0fdf4;
   border: 1px solid var(--green-pale);
@@ -269,7 +267,7 @@
   line-height: 1.5;
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 900px) {
   .form-wrapper { grid-template-columns: 1fr; }
 }

@@ -1,7 +1,3 @@
-/* ===========================
-   LANDING PAGE - GEN Z STYLE
-   =========================== */
-
 .landing-container {
   width: 100%;
   min-height: 100vh;
@@ -9,7 +5,6 @@
   overflow: hidden;
 }
 
-/* ---- NAVBAR ---- */
 .navbar {
   position: sticky;
   top: 0;
@@ -105,7 +100,6 @@
   box-shadow: var(--shadow-green);
 }
 
-/* ---- HERO ---- */
 .hero-section {
   position: relative;
   min-height: calc(100vh - 72px);
@@ -113,9 +107,10 @@
   align-items: center;
   padding: 80px 48px;
   overflow: hidden;
+  background: radial-gradient(circle at top left, rgba(34,197,94,0.06), transparent 32%), radial-gradient(circle at bottom right, rgba(56,189,248,0.04), transparent 30%), #ffffff;
 }
 
-/* Blob decorations */
+
 .hero-blob-1 {
   position: absolute;
   top: -120px; right: -120px;
@@ -158,7 +153,7 @@
   z-index: 1;
 }
 
-/* HERO LEFT */
+
 .hero-left {
   animation: fadeInLeft 0.7s ease 0.1s both;
 }
@@ -189,7 +184,7 @@
   line-height: 1.2;
   letter-spacing: -1.5px;
   margin-bottom: 24px;
-  color: var(--gray-900);
+  color: #0f172a;
   word-break: keep-all;
   overflow-wrap: break-word;
   white-space: normal;
@@ -210,17 +205,18 @@
   background: rgba(34,197,94,0.18);
   border-radius: 4px;
   z-index: -1;
-  /* inline elemen: gunakan box-decoration-break agar underline mengikuti teks */
+
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
 .hero-left p {
   font-size: 18px;
-  color: var(--gray-600);
+  color: #475569;
   line-height: 1.7;
   margin-bottom: 36px;
   max-width: 480px;
+  font-weight: 500;
 }
 
 .hero-cta-group {
@@ -317,7 +313,7 @@
   color: var(--gray-900);
 }
 
-/* HERO RIGHT */
+
 .hero-right {
   animation: fadeInRight 0.7s ease 0.2s both;
   position: relative;
@@ -343,7 +339,7 @@
   background: linear-gradient(135deg, rgba(34,197,94,0.15) 0%, transparent 50%);
 }
 
-/* Floating cards */
+
 .float-card {
   position: absolute;
   background: white;
@@ -424,12 +420,12 @@
   margin-top: 6px;
 }
 
-/* ---- SMOOTH SCROLL OFFSET (agar tidak ketutupan sticky navbar) ---- */
+
 #beranda, #fitur, #cara-kerja, #tentang {
   scroll-margin-top: 80px;
 }
 
-/* ---- FEATURES ---- */
+
 .features-section {
   padding: 100px 48px;
   background: var(--white);
@@ -627,7 +623,7 @@
   line-height: 1.6;
 }
 
-/* ---- CTA SECTION ---- */
+
 .cta-section {
   padding: 100px 48px;
   background: var(--gray-900);
@@ -756,7 +752,7 @@
   backdrop-filter: blur(8px);
 }
 
-/* ---- RESPONSIVE ---- */
+
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
   .hero-right { display: none; }
@@ -787,4 +783,15 @@
     font-size: 28px;
     letter-spacing: -0.5px;
   }
+}
+
+.landing-container .hero-left h1 {
+  color: #0f172a !important;
+  text-shadow: none !important;
+}
+
+.landing-container .hero-left p {
+  color: #475569 !important;
+  text-shadow: none !important;
+  font-weight: 500 !important;
 }

@@ -7,7 +7,7 @@ function Rekomendasi() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Ambil data dari location.state atau localStorage
+ 
   const savedData = localStorage.getItem('lastAnalysis');
   const data = location.state?.data || (savedData ? JSON.parse(savedData) : null);
   const recommendations = data?.recommendations;
@@ -90,7 +90,7 @@ function Rekomendasi() {
             </div>
           ) : (
             <>
-              {/* 3 CARDS */}
+              
               <div className="rec3-grid">
 
                 <div className="rec3-card rec3-red">
@@ -134,7 +134,7 @@ function Rekomendasi() {
 
               </div>
 
-              {/* MOTIVASI BANNER */}
+              
               <div className="rec3-motivasi">
                 <div className="rec3-motivasi-top">
                   <span className="rec3-heart">💗</span>
@@ -144,7 +144,7 @@ function Rekomendasi() {
                 <p>Kondisi keuangan bisa diperbaiki, asalkan dimulai dari kesadaran. Ikuti rekomendasi di atas satu persatu - tidak perlu sempurna sekaligus. Perubahan kecil yang konsisten jauh lebih kuat dari perubahan besar yang tidak bertahan.</p>
               </div>
 
-              {/* TOMBOL AKSI */}
+             
               <div style={{
                 display: 'flex', gap: '12px',
                 justifyContent: 'center', marginTop: '24px'

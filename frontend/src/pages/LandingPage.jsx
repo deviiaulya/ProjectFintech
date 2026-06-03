@@ -1,6 +1,5 @@
 import "../styles/LandingPage.css";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 
 // Helper smooth scroll
 const scrollTo = (id) => {
@@ -10,15 +9,6 @@ const scrollTo = (id) => {
 
 function LandingPage() {
   const navigate = useNavigate();
-  const { user } = useAuth();
-
-  const handleMulai = () => {
-    if (user) {
-      navigate("/dashboard");
-    } else {
-      navigate("/login");
-    }
-  };
 
   return (
     <div className="landing-container">
@@ -35,7 +25,7 @@ function LandingPage() {
           <li onClick={() => scrollTo("cara-kerja")}>Cara Kerja</li>
           <li onClick={() => scrollTo("tentang")}>Tentang</li>
         </ul>
-        <button className="nav-button" onClick={handleMulai}>
+        <button className="nav-button" onClick={() => navigate("/dashboard")}>
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
             <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
           </svg>
@@ -57,17 +47,18 @@ function LandingPage() {
               🤖 Powered by Machine Learning
             </div>
 
+            {/* FIX: hapus <br/> dan pakai white-space normal agar tidak pecah */}
             <h1>
               Cek Risiko <span className="highlight">Kredit</span>mu Sebelum Terlambat
             </h1>
 
             <p>
               Prediksi risiko gagal bayar kartu kredit secara real-time.
-              Analisis 25+ variabel keuangan dengan akurasi tinggi berbasis AI.
+              Analisis 31+ variabel keuangan dengan akurasi tinggi berbasis AI.
             </p>
 
             <div className="hero-cta-group">
-              <button className="btn-primary" onClick={handleMulai}>
+              <button className="btn-primary" onClick={() => navigate("/dashboard")}>
                 Cek Risiko Sekarang
                 <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -123,14 +114,14 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* STATS BAR */}
+      
       <div className="stats-bar">
         <div className="stat-item">
-          <span className="stat-number">25+</span>
+          <span className="stat-number">31+</span>
           <p className="stat-label">Variabel Dianalisis</p>
         </div>
         <div className="stat-item">
-          <span className="stat-number">94%</span>
+          <span className="stat-number">81%</span>
           <p className="stat-label">Akurasi Model ML</p>
         </div>
         <div className="stat-item">
@@ -139,7 +130,7 @@ function LandingPage() {
         </div>
       </div>
 
-      {/* CREDIT PHOTOS — id="tentang" */}
+      
       <section id="tentang" className="credit-photos-section">
         <div className="section-header">
           <span className="section-tag">💳 Kenapa Penting</span>
@@ -162,7 +153,7 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* FEATURES — id="fitur" */}
+      
       <section id="fitur" className="features-section">
         <div className="section-header">
           <span className="section-tag">✨ Fitur Unggulan</span>
@@ -175,12 +166,12 @@ function LandingPage() {
             <div className="feature-icon-wrap feature-icon-green">💳</div>
             <h3>Input Data Kredit</h3>
             <p>Masukkan data limit, tagihan, dan riwayat pembayaran kartu kreditmu dengan mudah dan aman.</p>
-            <span className="feature-arrow" onClick={handleMulai} style={{cursor:'pointer'}}>Coba Sekarang →</span>
+            <span className="feature-arrow">Coba Sekarang →</span>
           </div>
           <div className="feature-card">
             <div className="feature-icon-wrap feature-icon-sky">🤖</div>
             <h3>Analisis AI Instan</h3>
-            <p>Model machine learning menganalisis 25+ variabel untuk mendeteksi risiko gagal bayar secara akurat.</p>
+            <p>Model machine learning menganalisis 31+ variabel untuk mendeteksi risiko gagal bayar secara akurat.</p>
             <span className="feature-arrow">Pelajari →</span>
           </div>
           <div className="feature-card">
@@ -192,7 +183,7 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS — id="cara-kerja" */}
+      
       <section id="cara-kerja" className="howitworks-section">
         <div className="section-header">
           <span className="section-tag">🚀 Cara Kerja</span>
@@ -204,7 +195,7 @@ function LandingPage() {
           <div className="step-card">
             <div className="step-num">1</div>
             <h3>Isi Data Keuanganmu</h3>
-            <p>Masukkan data tagihan, limit kredit, dan riwayat pembayaran selama 3 bulan terakhir.</p>
+            <p>Masukkan data tagihan, limit kredit, dan riwayat pembayaran selama 6 bulan terakhir.</p>
           </div>
           <div className="step-card">
             <div className="step-num">2</div>
@@ -225,14 +216,14 @@ function LandingPage() {
         <div className="cta-blob cta-blob-2"></div>
         <div className="cta-inner">
           <h2>Mulai Cek <span>Risikomu</span><br/>Sekarang, Gratis!</h2>
-          <p>Tidak perlu kartu kredit. Langsung analisis dalam 60 detik.</p>
-          <button className="btn-cta" onClick={handleMulai}>
+          <p>Tidak perlu daftar. Tidak perlu kartu kredit. Langsung analisis dalam 60 detik.</p>
+          <button className="btn-cta" onClick={() => navigate("/dashboard")}>
             🚀 Mulai Analisis Gratis
           </button>
         </div>
       </section>
 
-      {/* FOOTER */}
+      
       <footer className="landing-footer">
         © 2025 <span>FinCerdas</span> — Dibuat dengan 💚 untuk generasi cerdas finansial
       </footer>
