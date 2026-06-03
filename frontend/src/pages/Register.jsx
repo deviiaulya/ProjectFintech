@@ -71,7 +71,7 @@ export default function Register() {
         marriage:  form.marriage,
         age:       form.age,
       });
-      navigate('/dashboard', { replace: true });
+      navigate('/login', { replace: true });
     } catch (err) {
       setError(err.response?.data?.message || err.message || 'Registrasi gagal.');
     } finally {

@@ -1,10 +1,16 @@
 import "../styles/Dashboard.css";
 import "../styles/Rekomendasi.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Home, FileText, PieChart, Lightbulb, Shield, Cpu, DollarSign, TrendingUp } from "lucide-react";
 
 function Rekomendasi() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Ambil data dari location.state atau localStorage
+  const savedData = localStorage.getItem('lastAnalysis');
+  const data = location.state?.data || (savedData ? JSON.parse(savedData) : null);
+  const recommendations = data?.recommendations;
 
   return (
     <div className="input-page">
@@ -61,47 +67,113 @@ function Rekomendasi() {
             <p>Berikut rekomendasi keuanganmu berdasarkan data yang dimasukkan</p>
           </div>
 
-          {/* 3 CARDS */}
-          <div className="rec3-grid">
+          {!recommendations ? (
+            // Kalau tidak ada data, tampilkan pesan
+            <div style={{
+              textAlign: 'center', padding: '40px',
+              background: '#f9fafb', borderRadius: '12px'
+            }}>
+              <p style={{fontSize: '1.1rem', color: '#6b7280'}}>
+                Belum ada data rekomendasi.
+              </p>
+              <button
+                onClick={() => navigate('/input-data')}
+                style={{
+                  marginTop: '16px', padding: '10px 24px',
+                  background: '#22c55e', color: 'white',
+                  border: 'none', borderRadius: '8px',
+                  cursor: 'pointer', fontWeight: 600
+                }}
+              >
+                Mulai Analisis
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* 3 CARDS */}
+              <div className="rec3-grid">
 
-            <div className="rec3-card rec3-red">
-              <div className="rec3-card-top">
-                <span className="rec3-icon">🕐</span>
-                <span className="rec3-badge rec3-badge-red">Prioritas Utama</span>
+                <div className="rec3-card rec3-red">
+                  <div className="rec3-card-top">
+                    <span className="rec3-icon">🕐</span>
+                    <span className="rec3-badge rec3-badge-red">Prioritas Utama</span>
+                  </div>
+                  <h3>Tindakan Segera</h3>
+                  <ul style={{paddingLeft:'16px', margin:'8px 0 0 0', fontSize:'0.85rem', lineHeight:'1.6'}}>
+                    {recommendations.prioritas?.map((rec, i) => (
+                      <li key={i}>{rec}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rec3-card rec3-yellow">
+                  <div className="rec3-card-top">
+                    <span className="rec3-icon">📉</span>
+                    <span className="rec3-badge rec3-badge-yellow">Penting</span>
+                  </div>
+                  <h3>Langkah Penting</h3>
+                  <ul style={{paddingLeft:'16px', margin:'8px 0 0 0', fontSize:'0.85rem', lineHeight:'1.6'}}>
+                    {recommendations.penting?.map((rec, i) => (
+                      <li key={i}>{rec}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rec3-card rec3-green">
+                  <div className="rec3-card-top">
+                    <span className="rec3-icon">📈</span>
+                    <span className="rec3-badge rec3-badge-green">Tips Jangka Panjang</span>
+                  </div>
+                  <h3>Kebiasaan Jangka Panjang</h3>
+                  <ul style={{paddingLeft:'16px', margin:'8px 0 0 0', fontSize:'0.85rem', lineHeight:'1.6'}}>
+                    {recommendations.jangka_panjang?.map((rec, i) => (
+                      <li key={i}>{rec}</li>
+                    ))}
+                  </ul>
+                </div>
+
               </div>
-              <h3>Bayar Tagihan tepat waktu</h3>
-              <p>Riwayat keterlambatan adalah faktor risiko terbesar kamu. Aktifkan auto-debit minimum agar tidak terlewat setiap bulan.</p>
-            </div>
 
-            <div className="rec3-card rec3-yellow">
-              <div className="rec3-card-top">
-                <span className="rec3-icon">📉</span>
-                <span className="rec3-badge rec3-badge-yellow">Penting</span>
+              {/* MOTIVASI BANNER */}
+              <div className="rec3-motivasi">
+                <div className="rec3-motivasi-top">
+                  <span className="rec3-heart">💗</span>
+                  <span className="rec3-motivasi-label">PESAN UNTUK KAMU</span>
+                </div>
+                <h2>"Mengetahui masalah adalah langkah pertama yang paling berani. Kamu sudah melakukannya."</h2>
+                <p>Kondisi keuangan bisa diperbaiki, asalkan dimulai dari kesadaran. Ikuti rekomendasi di atas satu persatu - tidak perlu sempurna sekaligus. Perubahan kecil yang konsisten jauh lebih kuat dari perubahan besar yang tidak bertahan.</p>
               </div>
-              <h3>Turunkan Penggunaan limit</h3>
-              <p>Kamu menggunakan 85% limit kartu kredit. Target di bawah 30% untuk menjaga credit score dan mengurangi risiko gagal bayar.</p>
-            </div>
 
-            <div className="rec3-card rec3-green">
-              <div className="rec3-card-top">
-                <span className="rec3-icon">📈</span>
-                <span className="rec3-badge rec3-badge-green">Tips Jangka Panjang</span>
+              {/* TOMBOL AKSI */}
+              <div style={{
+                display: 'flex', gap: '12px',
+                justifyContent: 'center', marginTop: '24px'
+              }}>
+                <button
+                  onClick={() => navigate('/input-data')}
+                  style={{
+                    padding: '10px 24px', background: 'white',
+                    color: '#374151', border: '1px solid #d1d5db',
+                    borderRadius: '8px', cursor: 'pointer',
+                    fontWeight: 600
+                  }}
+                >
+                  🔄 Analisis Ulang
+                </button>
+                <button
+                  onClick={() => navigate('/dashboard')}
+                  style={{
+                    padding: '10px 24px', background: '#22c55e',
+                    color: 'white', border: 'none',
+                    borderRadius: '8px', cursor: 'pointer',
+                    fontWeight: 600
+                  }}
+                >
+                  🏠 Kembali ke Dashboard
+                </button>
               </div>
-              <h3>Buat anggaran bulanan</h3>
-              <p>Catat pengeluaran tiap bulan dan identifikasi pos yang bisa dikurangi untuk mempercepat pelunasan tagihan.</p>
-            </div>
-
-          </div>
-
-          {/* MOTIVASI BANNER */}
-          <div className="rec3-motivasi">
-            <div className="rec3-motivasi-top">
-              <span className="rec3-heart">💗</span>
-              <span className="rec3-motivasi-label">PESAN UNTUK KAMU</span>
-            </div>
-            <h2>"Mengetahui masalah adalah langkah pertama yang paling berani. Kamu sudah melakukannya."</h2>
-            <p>Kondisi keuangan bisa diperbaiki, asalkan dimulai dari kesadaran. Ikuti rekomendasi di atas satu persatu - tidak perlu sempurna sekaligus. Perubahan kecil yang konsisten jauh lebih kuat dari perubahan besar yang tidak bertahan.</p>
-          </div>
+            </>
+          )}
 
         </main>
       </div>

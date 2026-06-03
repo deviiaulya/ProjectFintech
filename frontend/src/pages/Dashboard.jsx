@@ -38,7 +38,7 @@ function Dashboard() {
               background: '#f0fdf4', border: '1px solid #bbf7d0',
               borderRadius: 20, padding: '4px 12px'
             }}>
-              👤 {user.name}
+              👤 {user.fullname}
             </span>
           )}
 
@@ -133,7 +133,7 @@ function Dashboard() {
                 <span>Variabel dianalisis</span>
               </div>
               <div className="metric-card">
-                <h2>94%</h2>
+                <h2>81%</h2>
                 <span>Akurasi model</span>
               </div>
               <div className="metric-card">

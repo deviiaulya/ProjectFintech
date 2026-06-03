@@ -1,12 +1,65 @@
 import "../styles/HasilAnalisis.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function HasilAnalisis() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Ambil data dari location.state atau localStorage
+  const savedData = localStorage.getItem('lastAnalysis');
+  const data = location.state?.data || (savedData ? JSON.parse(savedData) : null);
 
   const today = new Date().toLocaleDateString("id-ID", {
     day: "numeric", month: "long", year: "numeric"
   });
+
+  // Kalau tidak ada data
+  if (!data) {
+    return (
+      <div style={{ textAlign: 'center', padding: '60px' }}>
+        <h2>Data tidak ditemukan</h2>
+        <p>Silakan lakukan analisis terlebih dahulu.</p>
+        <button
+          onClick={() => navigate('/input-data')}
+          style={{
+            marginTop: '16px', padding: '10px 24px',
+            background: '#22c55e', color: 'white',
+            border: 'none', borderRadius: '8px',
+            cursor: 'pointer', fontWeight: 600
+          }}
+        >
+          Kembali ke Input Data
+        </button>
+      </div>
+    );
+  }
+
+  const probability = Math.round(data.probability * 100);
+  const riskLevel = data.risk_level;
+  const recommendations = data.recommendations;
+
+  const riskConfig = {
+    LOW: {
+      label: '🟢 Risiko Rendah',
+      className: 'risk-badge-low',
+      color: '#22c55e',
+      ringClass: 'ring-fill-green',
+    },
+    MEDIUM: {
+      label: '🟡 Risiko Sedang',
+      className: 'risk-badge-medium',
+      color: '#f59e0b',
+      ringClass: 'ring-fill-amber',
+    },
+    HIGH: {
+      label: '🔴 Risiko Tinggi',
+      className: 'risk-badge-high',
+      color: '#f43f5e',
+      ringClass: 'ring-fill-red',
+    },
+  };
+
+  const config = riskConfig[riskLevel] || riskConfig.LOW;
 
   return (
     <div className="hasil-page">
@@ -27,9 +80,7 @@ function HasilAnalisis() {
             <h1>Hasil Analisis Risiko</h1>
             <p>Prediksi kondisi finansialmu berdasarkan data yang telah dimasukkan.</p>
           </div>
-          <div className="hasil-date">
-            📅 {today}
-          </div>
+          <div className="hasil-date">📅 {today}</div>
         </div>
 
         {/* RISK CARD */}
@@ -37,9 +88,9 @@ function HasilAnalisis() {
           <div className="risk-card-header">
             <div>
               <h2>Skor Risiko Gagal Bayar</h2>
-              <p>Berdasarkan analisis 25+ variabel keuangan dengan model ML</p>
+              <p>Berdasarkan analisis variabel keuangan dengan model ML</p>
             </div>
-            <span className="risk-badge-high">🔴 Risiko Tinggi</span>
+            <span className={config.className}>{config.label}</span>
           </div>
 
           <div className="risk-visual">
@@ -47,10 +98,19 @@ function HasilAnalisis() {
             <div className="risk-ring-wrap">
               <svg width="180" height="180" viewBox="0 0 180 180">
                 <circle className="ring-bg" cx="90" cy="90" r="70"/>
-                <circle className="ring-fill" cx="90" cy="90" r="70"/>
+                <circle
+                  className={`ring-fill ${config.ringClass}`}
+                  cx="90" cy="90" r="70"
+                  style={{
+                    strokeDasharray: `${probability * 4.4} 440`,
+                    stroke: config.color
+                  }}
+                />
               </svg>
               <div className="ring-text">
-                <span className="ring-percent">80%</span>
+                <span className="ring-percent" style={{color: config.color}}>
+                  {probability}%
+                </span>
                 <span className="ring-label">Probabilitas</span>
               </div>
             </div>
@@ -59,67 +119,71 @@ function HasilAnalisis() {
             <div className="risk-breakdown">
               <div className="breakdown-item">
                 <div className="breakdown-header">
-                  <span className="breakdown-label">Rasio Penggunaan Kredit</span>
-                  <span className="breakdown-val" style={{color:'#f43f5e'}}>92%</span>
+                  <span className="breakdown-label">Level Risiko</span>
+                  <span className="breakdown-val" style={{color: config.color}}>
+                    {riskLevel}
+                  </span>
                 </div>
                 <div className="breakdown-bar">
-                  <div className="breakdown-fill fill-red" style={{width:'92%'}}></div>
+                  <div
+                    className="breakdown-fill"
+                    style={{width: `${probability}%`, background: config.color}}
+                  ></div>
                 </div>
               </div>
 
               <div className="breakdown-item">
                 <div className="breakdown-header">
-                  <span className="breakdown-label">Keterlambatan Pembayaran</span>
-                  <span className="breakdown-val" style={{color:'#f59e0b'}}>3 bulan</span>
+                  <span className="breakdown-label">Probabilitas Gagal Bayar</span>
+                  <span className="breakdown-val" style={{color: config.color}}>
+                    {probability}%
+                  </span>
                 </div>
                 <div className="breakdown-bar">
-                  <div className="breakdown-fill fill-amber" style={{width:'60%'}}></div>
+                  <div
+                    className="breakdown-fill"
+                    style={{width: `${probability}%`, background: config.color}}
+                  ></div>
                 </div>
               </div>
 
               <div className="breakdown-item">
                 <div className="breakdown-header">
-                  <span className="breakdown-label">Jumlah Pembayaran vs Tagihan</span>
-                  <span className="breakdown-val" style={{color:'#f43f5e'}}>35%</span>
-                </div>
-                <div className="breakdown-bar">
-                  <div className="breakdown-fill fill-red" style={{width:'35%'}}></div>
-                </div>
-              </div>
-
-              <div className="breakdown-item">
-                <div className="breakdown-header">
-                  <span className="breakdown-label">Stabilitas Tagihan</span>
-                  <span className="breakdown-val" style={{color:'#22c55e'}}>Stabil</span>
-                </div>
-                <div className="breakdown-bar">
-                  <div className="breakdown-fill fill-green" style={{width:'72%'}}></div>
+                  <span className="breakdown-label">Status Prediksi</span>
+                  <span className="breakdown-val" style={{color: config.color}}>
+                    {data.prediction === 0 ? 'Tidak Gagal Bayar' : 'Berpotensi Gagal Bayar'}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-    
+        {/* INSIGHT + REKOMENDASI PRIORITAS */}
         <div className="cards-row">
           <div className="insight-box">
             <h3>🔍 Insight Analisis</h3>
             <ul>
-              <li>Total tagihan sangat tinggi dibanding limit kredit (92% utilisasi).</li>
-              <li>Riwayat pembayaran menunjukkan keterlambatan di 3 bulan terakhir.</li>
-              <li>Jumlah pembayaran jauh di bawah total tagihan yang jatuh tempo.</li>
-              <li>Penggunaan kartu kredit sangat aktif dan konsisten tinggi.</li>
+              <li>{data.message}</li>
+              <li>Probabilitas gagal bayar: <strong>{probability}%</strong></li>
+              <li>Level risiko: <strong>{riskLevel}</strong></li>
+              <li>
+                Status:{' '}
+                <strong>
+                  {data.prediction === 0
+                    ? 'Keuangan dalam kondisi aman'
+                    : 'Perlu perhatian segera'}
+                </strong>
+              </li>
             </ul>
           </div>
 
           <div className="recommendation-box">
-            <h3>💡 Rekomendasi Keuangan</h3>
+            <h3>💡 Rekomendasi Prioritas</h3>
             <ul className="rec-list">
-              <li><span></span> Kurangi penggunaan kartu kredit maksimal 30% dari limit.</li>
-              <li><span></span> Prioritaskan bayar tagihan sebelum jatuh tempo.</li>
-              <li><span></span> Buat dana darurat minimal 3x pengeluaran bulanan.</li>
-              <li><span></span> Evaluasi pengeluaran rutin yang bisa dikurangi.</li>
-              <li><span></span> Pertimbangkan konsultasi dengan perencana keuangan.</li>
+              {recommendations?.prioritas?.map((rec, i) => (
+                <li key={i}><span></span> {rec}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -128,14 +192,31 @@ function HasilAnalisis() {
         <div className="next-steps-card">
           <div className="next-steps-text">
             <h3>Langkah Selanjutnya</h3>
-            <p>Jangan khawatir! Risiko tinggi bisa diturunkan dengan langkah-langkah yang tepat. Mulai perubahan kecil hari ini untuk hasil yang lebih baik.</p>
+            <p>
+              {riskLevel === 'LOW'
+                ? 'Kondisi keuanganmu bagus! Lihat rekomendasi untuk mempertahankan kebiasaan baik ini.'
+                : riskLevel === 'MEDIUM'
+                ? 'Ada beberapa hal yang perlu diperbaiki. Lihat rekomendasi lengkap untuk panduan.'
+                : 'Jangan khawatir! Risiko tinggi bisa diturunkan. Segera lihat rekomendasi lengkap.'}
+            </p>
           </div>
           <div className="next-steps-actions">
-            {/* ← FIX: tambah onClick navigate ke /rekomendasi */}
-            <button className="btn-next-primary" onClick={() => navigate("/rekomendasi")}>
-              📋 Lihat Selengkapnya
+            <button
+              className="btn-next-primary"
+              onClick={() => navigate("/rekomendasi", { state: { data } })}
+            >
+              💡 Lihat Rekomendasi
             </button>
-            <button className="btn-next-secondary" onClick={() => navigate("/dashboard")}>
+            <button
+              className="btn-next-secondary"
+              onClick={() => navigate("/input-data")}
+            >
+              🔄 Analisis Ulang
+            </button>
+            <button
+              className="btn-next-secondary"
+              onClick={() => navigate("/dashboard")}
+            >
               🏠 Kembali ke Dashboard
             </button>
           </div>
@@ -147,3 +228,4 @@ function HasilAnalisis() {
 }
 
 export default HasilAnalisis;
+
