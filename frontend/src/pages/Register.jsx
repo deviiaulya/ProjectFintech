@@ -210,7 +210,7 @@ export default function Register() {
 
           
           <div className="auth-field">
-            <label className="auth-label">Status Pernikahan</label>
+            <label className="auth-label">Status</label>
             <div className="auth-input-wrap">
               <span className="auth-input-icon">💍</span>
               <select name="marriage"
