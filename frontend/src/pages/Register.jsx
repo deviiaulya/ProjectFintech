@@ -242,7 +242,7 @@ export default function Register() {
           <button className="auth-btn" type="submit" disabled={loading}>
             {loading
               ? <><div className="btn-spinner" /> Mendaftarkan...</>
-              : <>🎉 Daftar Sekarang</>
+              : <>Daftar Sekarang</>
             }
           </button>
         </form>
