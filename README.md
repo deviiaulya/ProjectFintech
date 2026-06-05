@@ -4,37 +4,50 @@ FinCerdas adalah aplikasi berbasis web yang membantu pengguna menganalisis risik
 
 Proyek ini dikembangkan sebagai bagian dari **Capstone Project Coding Camp 2026** dengan mengintegrasikan Frontend, Backend REST API, dan Model Machine Learning.
 
-🔗 **Frontend Demo:** https://anabilaa-xyz.github.io/fincerdas-frontend
+---
 
-🔗 **Backend API:** https://gregarious-art-production-cac2.up.railway.app
+# 🔗 Demo & Repository
+
+### Live Application
+- Frontend (Vercel): https://project-fintech-cerdas.vercel.app/
+- Backend API: https://gregarious-art-production-cac2.up.railway.app
+
+### Source Code
+- Repository Utama: https://github.com/deviiaulya/ProjectFintech
+- Repository Machine Learning: https://github.com/samuelyahya/Capstone-Project
 
 ---
 
 # 📌 Fitur Utama
 
-### 🔐 Autentikasi Pengguna
+## 🔐 Autentikasi Pengguna
 
 - Registrasi akun baru
 - Login menggunakan email dan password
 - Proteksi endpoint menggunakan JWT
 
-### 📊 Analisis Risiko Kredit
+## 📊 Analisis Risiko Kredit
 
 - Input data keuangan kartu kredit
 - Integrasi dengan model Machine Learning
 - Prediksi risiko gagal bayar kartu kredit
 
-### 📈 Hasil Analisis
+## 📈 Hasil Analisis
 
 - Skor risiko
 - Kategori risiko
 - Visualisasi hasil analisis
 
-### 💡 Rekomendasi Keuangan
+## 💡 Rekomendasi Keuangan
 
 - Prioritas utama
 - Langkah perbaikan jangka pendek
 - Strategi keuangan jangka panjang
+
+## 📝 Riwayat Analisis
+
+- Penyimpanan hasil analisis pengguna
+- Detail analisis berdasarkan ID
 
 ---
 
@@ -73,7 +86,7 @@ Proyek ini dikembangkan sebagai bagian dari **Capstone Project Coding Camp 2026*
 - Axios
 - Tailwind CSS 4
 - Lucide React
-- GitHub Pages
+- Vercel
 
 ## Backend
 
@@ -89,7 +102,7 @@ Proyek ini dikembangkan sebagai bagian dari **Capstone Project Coding Camp 2026*
 ## Machine Learning
 
 - Python
-- FastAPI / Flask (sesuaikan dengan model ML kalian)
+- FastAPI
 - Railway Deployment
 
 ---
@@ -119,10 +132,28 @@ ProjectFintech/
 
 | Komponen | Platform | URL |
 |-----------|-----------|-----------|
-| Frontend | GitHub Pages | https://anabilaa-xyz.github.io/fincerdas-frontend |
+| Frontend | Vercel | https://project-fintech-cerdas.vercel.app |
 | Backend API | Railway | https://gregarious-art-production-cac2.up.railway.app |
 | Database | Supabase | PostgreSQL |
 | Machine Learning API | Railway | https://web-production-92448.up.railway.app |
+
+---
+
+# 🤖 Machine Learning
+
+Model Machine Learning yang digunakan untuk melakukan prediksi risiko gagal bayar kartu kredit dikembangkan dan dikelola secara terpisah.
+
+Repository Machine Learning:
+
+https://github.com/samuelyahya/Capstone-Project
+
+Fungsi utama model Machine Learning:
+
+- Menerima data keuangan pengguna dari Backend API
+- Melakukan proses prediksi risiko gagal bayar
+- Menghasilkan skor risiko
+- Menentukan kategori risiko
+- Mengirimkan hasil prediksi ke Backend API
 
 ---
 
@@ -133,6 +164,8 @@ ProjectFintech/
 ```bash
 git clone https://github.com/deviiaulya/ProjectFintech.git
 ```
+
+Masuk ke folder project:
 
 ```bash
 cd ProjectFintech
@@ -148,13 +181,13 @@ Masuk ke folder frontend:
 cd frontend
 ```
 
-Install dependency:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Buat file `.env`
+Buat file `.env`:
 
 ```env
 VITE_API_URL=https://gregarious-art-production-cac2.up.railway.app/api
@@ -182,13 +215,13 @@ Masuk ke folder backend:
 cd Backend
 ```
 
-Install dependency:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Buat file `.env`
+Buat file `.env`:
 
 ```env
 PORT=5000
@@ -214,7 +247,7 @@ http://localhost:5000
 
 ---
 
-# 📌 API Endpoint
+# 📌 API Endpoints
 
 Base URL:
 
@@ -226,10 +259,10 @@ https://gregarious-art-production-cac2.up.railway.app/api
 |----------|----------|----------|
 | POST | `/auth/register` | Registrasi pengguna |
 | POST | `/auth/login` | Login pengguna |
-| GET | `/user/profile` | Profil pengguna |
+| GET | `/user/profile` | Mendapatkan profil pengguna |
 | POST | `/predict` | Prediksi risiko gagal bayar |
-| GET | `/analyses/history` | Riwayat analisis |
-| GET | `/analyses/:id` | Detail analisis |
+| GET | `/analyses/history` | Riwayat analisis pengguna |
+| GET | `/analyses/:id` | Detail analisis berdasarkan ID |
 
 ---
 
@@ -237,7 +270,7 @@ https://gregarious-art-production-cac2.up.railway.app/api
 
 Endpoint tertentu memerlukan JWT Token.
 
-Tambahkan token pada header:
+Tambahkan token pada header request:
 
 ```http
 Authorization: Bearer <JWT_TOKEN>
@@ -272,18 +305,23 @@ Hasil Analisis Risiko
       │
       ▼
 Rekomendasi Keuangan
-
+      │
+      ▼
+Riwayat Analisis
 ```
 
+---
 
 # 👨‍💻 Tim Pengembang
 
-| Peran | Nama |
+| Divisi | Nama |
 |---------|---------|
-| Frontend Developer | Anabila |
+| Frontend Developer | Aulia Nabila |
 | Backend Developer | Devi Aulya Hapsari |
-| Machine Learning Engineer | Samuel dan Joshua |
-| Data science | Sultan dan Rachel |
+| Machine Learning Engineer | Samuel Yahya |
+| Machine Learning Engineer | Joshua Alexander Pandaleke |
+| Data Scientist | Sultan Alamsyah Borneo Arifin |
+| Data Scientist | Rachel Bela Amanda|
 
 ---
 
@@ -291,8 +329,10 @@ Rekomendasi Keuangan
 
 FinCerdas dikembangkan untuk membantu masyarakat memahami tingkat risiko gagal bayar kartu kredit melalui analisis data keuangan berbasis Machine Learning serta memberikan rekomendasi keuangan yang dapat membantu pengambilan keputusan finansial yang lebih baik.
 
+Selain memberikan hasil prediksi, FinCerdas juga menyediakan rekomendasi yang dapat digunakan sebagai dasar untuk meningkatkan kesehatan finansial pengguna.
+
 ---
 
 # 📄 Lisensi
 
-Project ini dibuat untuk keperluan akademik dan pembelajaran dalam program Capstone Coding Camp 2026.
+Project ini dibuat untuk keperluan akademik dan pembelajaran dalam program Capstone Project Coding Camp 2026.
